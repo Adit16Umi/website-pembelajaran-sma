@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Ilustrasi kotak video WITH tombol putar">
+  <defs>
+    <linearGradient id="vd-screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#312e81" />
+      <stop offset="0.5" stop-color="#6d28d9" />
+      <stop offset="1" stop-color="#0e7490" />
+    </linearGradient>
+    <linearGradient id="vd-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fde68a" />
+      <stop offset="1" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+  <rect x="34" y="46" width="332" height="208" rx="20" fill="rgba(255,255,255,0.05)" stroke="url(#vd-gold)" stroke-width="2.5" />
+  <rect x="52" y="64" width="296" height="172" rx="12" fill="url(#vd-screen)" opacity="0.9" />
+  <g fill="none" stroke="#fde68a" stroke-width="1.6" opacity="0.4">
+    <path d="M76 200 q40 -70 90 -30 q40 32 80 -26 q20 -30 40 -18" />
+    <path d="M76 218 q46 -56 96 -22 q38 26 76 -20" />
+  </g>
+  <circle cx="200" cy="150" r="42" fill="rgba(10,8,30,0.55)" stroke="url(#vd-gold)" stroke-width="3" />
+  <path d="M188 130 L226 150 L188 170 Z" fill="url(#vd-gold)" />
+  <g fill="url(#vd-gold)" opacity="0.85">
+    <circle cx="60" cy="58" r="4" />
+    <circle cx="340" cy="58" r="4" />
+    <circle cx="60" cy="242" r="4" />
+    <circle cx="340" cy="242" r="4" />
+  </g>
+  <g stroke="url(#vd-gold)" stroke-width="3" stroke-linecap="round" opacity="0.7">
+    <path d="M120 22 q30 -14 60 0 q30 14 60 0" />
+  </g>
+</svg>

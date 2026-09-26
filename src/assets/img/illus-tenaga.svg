@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-label="Ilustrasi tenaga gerak tari">
+  <defs>
+    <linearGradient id="tn-a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fb7185" />
+      <stop offset="1" stop-color="#f5b942" />
+    </linearGradient>
+    <linearGradient id="tn-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fde68a" />
+      <stop offset="1" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+  <circle cx="200" cy="130" r="96" fill="none" stroke="url(#tn-a)" stroke-width="3" opacity="0.5" stroke-dasharray="10 10" />
+  <g fill="url(#tn-gold)">
+    <circle cx="200" cy="76" r="20" />
+    <path d="M176 100 h48 l18 106 h-84 z" />
+  </g>
+  <g stroke="url(#tn-a)" stroke-width="5" fill="none" stroke-linecap="round">
+    <path d="M60 150 l-30 0 M340 150 l30 0" />
+    <path d="M84 96 l-22 -22 M316 96 l22 -22" />
+    <path d="M84 204 l-22 22 M316 204 l22 22" />
+  </g>
+  <g fill="url(#tn-a)">
+    <path d="M22 150 l18 -8 v16 z" />
+    <path d="M378 150 l-18 -8 v16 z" />
+    <path d="M60 74 l18 -8 v16 z" transform="rotate(45 69 82)" />
+    <path d="M340 74 l-18 -8 v16 z" transform="rotate(-45 331 82)" />
+  </g>
+  <g fill="url(#tn-gold)" opacity="0.9">
+    <path d="M200 12 l7 14 15 2 -11 11 3 15 -14 -7 -14 7 3 -15 -11 -11 15 -2 z" transform="scale(0.8) translate(50 6)" />
+  </g>
+</svg>

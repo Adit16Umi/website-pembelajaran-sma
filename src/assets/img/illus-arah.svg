@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-label="Ilustrasi arah gerak tari">
+  <defs>
+    <linearGradient id="ar-a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee" />
+      <stop offset="1" stop-color="#a855f7" />
+    </linearGradient>
+    <linearGradient id="ar-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fde68a" />
+      <stop offset="1" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#ar-a)" stroke-width="5" stroke-linecap="round">
+    <path d="M46 190 C 100 120 300 120 354 190" stroke-dasharray="12 12" />
+    <path d="M354 190 l-24 -6 l10 -14 z" fill="url(#ar-a)" stroke="none" />
+    <path d="M46 190 l24 -6 l-10 -14 z" fill="url(#ar-a)" stroke="none" />
+  </g>
+  <g fill="url(#ar-gold)">
+    <circle cx="200" cy="70" r="22" />
+    <path d="M176 100 h48 l18 120 h-84 z" />
+  </g>
+  <g stroke="url(#ar-gold)" stroke-width="3" fill="none" opacity="0.85" stroke-linecap="round">
+    <path d="M152 110 C 108 122 88 152 80 180" />
+    <path d="M248 110 C 292 122 312 152 320 180" />
+  </g>
+  <g fill="url(#ar-a)" opacity="0.9">
+    <path d="M200 34 l-8 16 h16 z" />
+  </g>
+  <g fill="url(#ar-gold)" opacity="0.75">
+    <circle cx="66" cy="70" r="5" />
+    <circle cx="334" cy="70" r="5" />
+  </g>
+</svg>

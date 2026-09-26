@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Ilustrasi busana dan ornamen tradisional">
+  <defs>
+    <linearGradient id="bc-dress" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c084fc" />
+      <stop offset="0.5" stop-color="#7c3aed" />
+      <stop offset="1" stop-color="#312e81" />
+    </linearGradient>
+    <linearGradient id="bc-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fde68a" />
+      <stop offset="1" stop-color="#d97706" />
+    </linearGradient>
+    <radialGradient id="bc-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0.3" />
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <circle cx="200" cy="150" r="140" fill="url(#bc-glow)" />
+  <g>
+    <path d="M170 76 h60 l10 44 h-80 z" fill="url(#bc-dress)" />
+    <path d="M170 76 h60 l10 44 h-80 z" fill="none" stroke="url(#bc-gold)" stroke-width="2.5" />
+    <path d="M160 120 h80 l26 128 h-132 z" fill="url(#bc-dress)" />
+    <path d="M160 120 h80 l26 128 h-132 z" fill="none" stroke="url(#bc-gold)" stroke-width="2.5" />
+    <g stroke="url(#bc-gold)" stroke-width="2" fill="none" opacity="0.8">
+      <path d="M166 152 q34 16 68 0" />
+      <path d="M162 186 q38 18 76 0" />
+      <path d="M158 220 q42 18 84 0" />
+    </g>
+    <path d="M150 60 q50 -26 100 0" fill="none" stroke="url(#bc-gold)" stroke-width="4" stroke-linecap="round" />
+    <circle cx="200" cy="52" r="7" fill="url(#bc-gold)" />
+  </g>
+  <g transform="translate(296 168)">
+    <circle cx="0" cy="0" r="46" fill="none" stroke="url(#bc-gold)" stroke-width="3" opacity="0.9" />
+    <g stroke="url(#bc-gold)" stroke-width="2.2" fill="none" opacity="0.85">
+      <path d="M0 -30 q14 18 0 30 q-14 12 0 30" />
+      <path d="M0 -30 q-14 18 0 30 q14 12 0 30" />
+      <path d="M-30 0 q18 -14 30 0 q12 14 30 0" />
+      <path d="M-30 0 q18 14 30 0 q12 -14 30 0" />
+      <circle cx="0" cy="0" r="4" />
+    </g>
+  </g>
+  <g fill="#f5b942" opacity="0.9">
+    <circle cx="76" cy="120" r="5" />
+    <circle cx="60" cy="164" r="3.5" />
+    <circle cx="92" cy="196" r="4.5" />
+  </g>
+</svg>

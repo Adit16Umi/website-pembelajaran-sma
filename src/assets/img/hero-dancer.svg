@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 620" role="img" aria-label="Ilustrasi penari tradisional dengan kain yang berkibar">
+  <defs>
+    <linearGradient id="hd-skin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd9a8" />
+      <stop offset="1" stop-color="#f0a86b" />
+    </linearGradient>
+    <linearGradient id="hd-sarong" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a855f7" />
+      <stop offset="0.55" stop-color="#6d28d9" />
+      <stop offset="1" stop-color="#312e81" />
+    </linearGradient>
+    <linearGradient id="hd-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fde68a" />
+      <stop offset="0.5" stop-color="#f5b942" />
+      <stop offset="1" stop-color="#d97706" />
+    </linearGradient>
+    <linearGradient id="hd-fabric" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5b942" stop-opacity="0.15" />
+      <stop offset="0.5" stop-color="#fde68a" stop-opacity="0.85" />
+      <stop offset="1" stop-color="#f5b942" stop-opacity="0.15" />
+    </linearGradient>
+    <radialGradient id="hd-halo" cx="0.5" cy="0.42" r="0.55">
+      <stop offset="0" stop-color="#a855f7" stop-opacity="0.45" />
+      <stop offset="0.6" stop-color="#7c3aed" stop-opacity="0.12" />
+      <stop offset="1" stop-color="#7c3aed" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="hd-ground" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5b942" stop-opacity="0" />
+      <stop offset="0.5" stop-color="#f5b942" stop-opacity="0.7" />
+      <stop offset="1" stop-color="#f5b942" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="260" cy="268" rx="240" ry="250" fill="url(#hd-halo)" />
+
+  <g stroke="url(#hd-fabric)" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.65">
+    <path d="M92 168 C 40 210 28 268 44 322" />
+    <path d="M440 152 C 492 196 504 252 490 306" />
+    <path d="M74 400 C 26 424 18 470 34 512" />
+  </g>
+
+  <g opacity="0.9">
+    <path d="M260 566 L118 566 L96 556 L120 548 L148 556 L372 556 L400 548 L424 556 L402 566 Z" fill="url(#hd-gold)" />
+    <path d="M96 566 L424 566" stroke="#fde68a" stroke-width="2" opacity="0.6" />
+  </g>
+
+  <g>
+    <path d="M214 190 q46 -26 92 0 l-6 74 -80 0 z" fill="url(#hd-sarong)" />
+    <path d="M214 190 q46 -26 92 0 l-6 74 -80 0 z" fill="none" stroke="url(#hd-gold)" stroke-width="2.5" opacity="0.85" />
+    <g stroke="url(#hd-gold)" stroke-width="2" opacity="0.7" fill="none">
+      <path d="M226 216 q34 16 68 0" />
+      <path d="M222 238 q38 18 76 0" />
+    </g>
+    <path d="M226 186 q34 -18 68 0" stroke="url(#hd-gold)" stroke-width="3" fill="none" stroke-linecap="round" />
+  </g>
+
+  <g>
+    <path d="M232 148 q-6 -46 28 -58 q34 -12 42 22 q6 28 -12 40 z" fill="url(#hd-skin)" />
+    <path d="M232 148 q-6 -46 28 -58 q34 -12 42 22 q6 28 -12 40 z" fill="none" stroke="#7c2d12" stroke-width="2" opacity="0.35" />
+    <path d="M226 118 q14 -34 52 -32 q30 2 38 24 q-22 -14 -48 -12 q-24 2 -42 20 z" fill="url(#hd-gold)" />
+    <circle cx="278" cy="96" r="9" fill="none" stroke="url(#hd-gold)" stroke-width="2.5" opacity="0.8" />
+  </g>
+
+  <g stroke-linecap="round" fill="none">
+    <path d="M224 200 C 168 214 132 258 116 312" stroke="url(#hd-skin)" stroke-width="21" />
+    <path d="M116 312 C 106 330 110 342 122 348" stroke="url(#hd-skin)" stroke-width="17" />
+    <path d="M296 200 C 352 208 396 240 424 292" stroke="url(#hd-skin)" stroke-width="21" />
+    <path d="M424 292 C 436 310 434 322 422 330" stroke="url(#hd-skin)" stroke-width="17" />
+  </g>
+
+  <g fill="url(#hd-gold)">
+    <circle cx="222" cy="200" r="7" />
+    <circle cx="298" cy="200" r="7" />
+    <circle cx="124" cy="346" r="6" />
+    <circle cx="424" cy="330" r="6" />
+  </g>
+
+  <g>
+    <path d="M232 262 L288 262 L318 452 q-52 26 -104 0 z" fill="url(#hd-sarong)" />
+    <g stroke="url(#hd-gold)" stroke-width="2.2" fill="none" opacity="0.75">
+      <path d="M238 300 q44 20 88 0" />
+      <path d="M240 340 q46 20 90 0" />
+      <path d="M244 380 q44 20 84 0" />
+    </g>
+    <g fill="url(#hd-gold)" opacity="0.85">
+      <path d="M260 316 l9 18 20 3 -14 14 3 20 -18 -10 -18 10 3 -20 -14 -14 20 -3 z" transform="translate(0,-8) scale(0.9) translate(28,10)" />
+    </g>
+  </g>
+
+  <g>
+    <path d="M238 452 q22 16 44 0 l10 74 q-32 12 -64 0 z" fill="url(#hd-skin)" />
+    <path d="M238 452 q22 16 44 0 l10 74 q-32 12 -64 0 z" fill="none" stroke="#7c2d12" stroke-width="1.6" opacity="0.3" />
+    <path d="M212 522 h40 q14 0 14 12 t-14 12 h-40 q-14 0 -14 -12 t14 -12 z" fill="url(#hd-gold)" />
+    <path d="M252 522 h40 q14 0 14 12 t-14 12 h-40 q-14 0 -14 -12 t14 -12 z" fill="url(#hd-gold)" />
+  </g>
+
+  <g fill="none" stroke="url(#hd-ground)" stroke-width="3" stroke-linecap="round">
+    <path d="M60 596 h150" />
+    <path d="M310 596 h150" />
+  </g>
+</svg>

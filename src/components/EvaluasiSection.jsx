@@ -1,69 +1,143 @@
 import { useState } from 'react';
 import { SOAL_PILGAN } from '../data/dataTariPattudu';
+import Reveal from './Reveal';
+import { IconCheck, IconRefresh, IconTarget } from './Icons';
 
-export default function EvaluasiSection() {
-  const [userAnswers, setUserAnswers] = useState({});
-  const [reflektifText, setReflektifText] = useState('');
-  const [score, setScore] = useState(null);
+export default function EvaluasiSection({ onNavigate }) {
+  const [jawaban, setJawaban] = useState({});
+  const [hasil, setHasil] = useState(null);
+  const [refleksi, setRefleksi] = useState('');
 
-  const handleSelect = (soalId, optionId) => {
-    setUserAnswers({ ...userAnswers, [soalId]: optionId });
-  };
-
-  const handleHitungNilai = () => {
+  const periksa = () => {
     let benar = 0;
     SOAL_PILGAN.forEach((s) => {
-      if (userAnswers[s.id] === s.kunci) benar++;
+      if (jawaban[s.id] === s.kunci) benar++;
     });
-    setScore(Math.round((benar / SOAL_PILGAN.length) * 100));
+    setHasil({ benar, total: SOAL_PILGAN.length, persen: Math.round((benar / SOAL_PILGAN.length) * 100) });
+  };
+
+  const reset = () => {
+    setJawaban({});
+    setHasil(null);
   };
 
   return (
-    <div style={{ maxWidth: '900px', margin: '0 auto', padding: '20px' }}>
-      <h2 style={{ color: '#8B4513', borderBottom: '2px solid #8B4513', paddingBottom: '10px' }}>📝 Evaluasi Pembelajaran</h2>
-
-      {/* Pilihan Ganda */}
-      <div style={{ backgroundColor: '#FFF', padding: '25px', borderRadius: '12px', marginBottom: '20px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
-        <h3 style={{ color: '#8B4513' }}>Pilihan Ganda</h3>
-
-        {SOAL_PILGAN.map((s, index) => (
-          <div key={s.id} style={{ marginBottom: '20px', borderBottom: '1px solid #EEE', paddingBottom: '15px' }}>
-            <p style={{ fontWeight: 'bold', color: '#333' }}>{index + 1}. {s.soal}</p>
-            <div style={{ display: 'grid', gap: '8px' }}>
-              {s.pilihan.map((p) => (
-                <label key={p.id} style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', padding: '8px', borderRadius: '6px', backgroundColor: userAnswers[s.id] === p.id ? '#FFF8DC' : '#FAFAFA' }}>
-                  <input type="radio" name={`soal-${s.id}`} checked={userAnswers[s.id] === p.id} onChange={() => handleSelect(s.id, p.id)} />
-                  <span><strong>{p.id}.</strong> {p.text}</span>
-                </label>
-              ))}
+    <div className="page">
+      <section className="sec">
+        <div className="wrap">
+          <Reveal className="sectionHead">
+            <div style={{ maxWidth: 700 }}>
+              <span className="eyebrow">Evaluasi Pembelajaran</span>
+              <h2 className="sec__title">
+                Cek <span className="grad-text">Pemahamanmu</span>
+              </h2>
+              <p className="sec__sub">
+                Jawab seluruh pertanyaan berikut, lalu tekan tombol periksa untuk melihat skormu.
+              </p>
             </div>
-          </div>
-        ))}
+            <span className="chip chip--gold">
+              <IconTarget /> {SOAL_PILGAN.length} soal
+            </span>
+          </Reveal>
 
-        <button onClick={handleHitungNilai} style={{ padding: '10px 20px', backgroundColor: '#8B4513', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}>
-          Periksa Jawaban Pilihan Ganda
-        </button>
+          <Reveal as="article" className="quiz" variant="up">
+            <h3 className="quiz__q" style={{ marginBottom: 20 }}>
+              <span className="quiz__no">A</span>
+              Pilihan Ganda
+            </h3>
 
-        {score !== null && (
-          <div style={{ marginTop: '15px', padding: '15px', backgroundColor: '#E6F4EA', color: '#137333', borderRadius: '8px', fontWeight: 'bold' }}>
-            Skor Pilihan Ganda Kamu: {score} / 100
-          </div>
-        )}
-      </div>
+            {SOAL_PILGAN.map((s, i) => (
+              <div className="field" key={s.id} style={{ marginTop: i === 0 ? 0 : 26 }}>
+                <p className="quiz__q" style={{ marginBottom: 12 }}>
+                  <span className="quiz__no">{i + 1}</span>
+                  {s.soal}
+                </p>
+                <div className="opts">
+                  {s.pilihan.map((p) => (
+                    <label
+                      key={p.id}
+                      className={`opt ${jawaban[s.id] === p.id ? 'opt--sel' : ''}`}
+                    >
+                      <input
+                        type="radio"
+                        name={`soal-${s.id}`}
+                        value={p.id}
+                        checked={jawaban[s.id] === p.id}
+                        onChange={() => setJawaban((j) => ({ ...j, [s.id]: p.id }))}
+                        style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}
+                      />
+                      <span className="opt__mark">{p.id}</span>
+                      <span>{p.text}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            ))}
 
-      {/* Evaluasi Reflektif */}
-      <div style={{ backgroundColor: '#FFF', padding: '25px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
-        <h3 style={{ color: '#8B4513' }}>Evaluasi Reflektif</h3>
-        <p style={{ fontSize: '14px', color: '#555' }}>
-          Tuliskan dalam 3–5 kalimat: <em>“Menurut saya, Tari Pattu’du Tommuane penting dipelajari di sekolah karena ….”</em>
-        </p>
-        <textarea 
-          value={reflektifText} 
-          onChange={(e) => setReflektifText(e.target.value)} 
-          style={{ width: '100%', height: '100px', padding: '10px', borderRadius: '6px', border: '1px solid #CCC', fontFamily: 'inherit' }}
-          placeholder="Tuliskan pendapatmu di sini..."
-        />
-      </div>
+            <div className="toolbar">
+              <button type="button" className="btn btn--primary" onClick={periksa}>
+                <IconCheck /> Periksa Jawaban
+              </button>
+              <button type="button" className="btn btn--ghost" onClick={reset}>
+                <IconRefresh /> Ulangi
+              </button>
+            </div>
+
+            {hasil && (
+              <div className="scoreBox">
+                <div className="scoreBox__top">
+                  <div>
+                    <div className="scoreBox__value">{hasil.persen}</div>
+                    <div className="scoreBox__label">
+                      Kamu menjawab benar {hasil.benar} dari {hasil.total} soal.
+                    </div>
+                  </div>
+                  <span className="chip chip--gold">
+                    {hasil.persen >= 80
+                      ? 'Sangat Baik'
+                      : hasil.persen >= 60
+                        ? 'Cukup Baik'
+                        : 'Perlu Diulang'}
+                  </span>
+                </div>
+                <div className="bar">
+                  <div className="bar__fill" style={{ width: `${hasil.persen}%` }} />
+                </div>
+                <p className="card__text" style={{ marginTop: 14 }}>
+                  {hasil.persen >= 80
+                    ? 'Keren! Pemahamanmu tentang Tari Pattu’d Tommuane sudah sangat baik.'
+                    : hasil.persen >= 60
+                      ? 'Bagus. Coba baca ulang modul materi agar pemahamanmu makin lengkap.'
+                      : 'Jangan menyerah. Baca kembali modul materi, lalu coba lagi.'}
+                </p>
+              </div>
+            )}
+          </Reveal>
+
+          <Reveal as="article" className="quiz" variant="up" delay={80}>
+            <h3 className="quiz__q" style={{ marginBottom: 10 }}>
+              <span className="quiz__no">B</span>
+              Evaluasi Reflektif
+            </h3>
+            <p className="card__text" style={{ marginBottom: 16 }}>
+              Tuliskan dalam 3–5 kalimat: <em>“Menurut saya, Tari Pattu&apos;du Tommuane penting dipelajari di sekolah karena ….”</em>
+            </p>
+            <textarea
+              className="textarea"
+              style={{ minHeight: 150 }}
+              value={refleksi}
+              onChange={(e) => setRefleksi(e.target.value)}
+              placeholder="Tuliskan pendapatmu di sini..."
+            />
+            <div className="toolbar">
+              <button type="button" className="btn btn--brand" onClick={() => onNavigate('refleksi')}>
+                Lanjut ke Halaman Refleksi
+              </button>
+              <span className="toolbar__note">{refleksi.trim().length} karakter ditulis.</span>
+            </div>
+          </Reveal>
+        </div>
+      </section>
     </div>
   );
 }

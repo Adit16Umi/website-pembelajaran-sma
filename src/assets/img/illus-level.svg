@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" role="img" aria-label="Ilustrasi level gerak tari">
+  <defs>
+    <linearGradient id="lv-a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#34d399" />
+      <stop offset="1" stop-color="#22d3ee" />
+    </linearGradient>
+    <linearGradient id="lv-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fde68a" />
+      <stop offset="1" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+  <g stroke="url(#lv-a)" stroke-width="3" opacity="0.5" fill="none" stroke-dasharray="8 8">
+    <path d="M40 70 h320" />
+    <path d="M40 140 h320" />
+    <path d="M40 210 h320" />
+  </g>
+  <g fill="url(#lv-gold)">
+    <path d="M118 96 h44 l12 104 h-68 z" />
+    <circle cx="140" cy="74" r="18" />
+    <path d="M252 166 h44 l12 104 h-68 z" />
+    <circle cx="274" cy="146" r="18" />
+  </g>
+  <g stroke="url(#lv-gold)" stroke-width="6" stroke-linecap="round" fill="none">
+    <path d="M118 106 L74 66" />
+    <path d="M162 106 L206 66" />
+  </g>
+  <g fill="url(#lv-a)">
+    <path d="M196 44 l-14 0 0 28 z" />
+  </g>
+  <text x="200" y="240" font-family="Segoe UI, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#a5b4fc">TINGGI · SEDANG · RENDAH</text>
+</svg>

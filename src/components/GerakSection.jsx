@@ -1,32 +1,90 @@
 import { GERAK_DATA } from '../data/dataTariPattudu';
+import Reveal from './Reveal';
+import { IconArrow, IconBolt, IconClock, IconGrid } from './Icons';
 
-export default function GerakSection() {
+export default function GerakSection({ onNavigate }) {
   return (
-    <div style={{ maxWidth: '900px', margin: '0 auto', padding: '20px' }}>
-      <h2 style={{ color: '#8B4513', borderBottom: '2px solid #8B4513', paddingBottom: '10px' }}>🩰 Materi 6 — Mengenal Gerak Tari</h2>
-      <p style={{ color: '#555', marginBottom: '20px' }}>
-        Bagian ini dibuat visual pada website dengan foto dan video setiap gerak. Nama dan uraian gerak diisi berdasarkan hasil observasi atau sumber penelitian.
-      </p>
+    <div className="page">
+      <section className="sec">
+        <div className="wrap">
+          <Reveal className="sectionHead">
+            <div style={{ maxWidth: 700 }}>
+              <span className="eyebrow">Materi 6</span>
+              <h2 className="sec__title">
+                Mengenal <span className="grad-text">Gerak Tari</span>
+              </h2>
+              <p className="sec__sub">
+                Setiap gerak tari memiliki arah, level, dan tenaga tertentu. Perhatikan ilustrasi berikut,
+                lalu catat hasil pengamatanmu pada lembar kerja peserta didik.
+              </p>
+            </div>
+            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              <span className="chip">
+                <IconGrid /> Ruang
+              </span>
+              <span className="chip">
+                <IconClock /> Waktu
+              </span>
+              <span className="chip">
+                <IconBolt /> Tenaga
+              </span>
+            </div>
+          </Reveal>
 
-      <div style={{ display: 'grid', gap: '25px' }}>
-        {GERAK_DATA.map((g) => (
-          <div key={g.id} style={{ backgroundColor: '#FFF', padding: '20px', borderRadius: '12px', boxShadow: '0 4px 10px rgba(0,0,0,0.05)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-            <div>
-              <img src={g.image} alt={g.nama} style={{ width: '100%', borderRadius: '8px', objectFit: 'cover' }} />
-              <div style={{ marginTop: '10px', fontSize: '12px', color: '#888', textAlign: 'center' }}>[ Foto Gerakan ]</div>
-            </div>
-            <div>
-              <h3 style={{ color: '#8B4513', margin: '0 0 10px 0' }}>{g.nama}</h3>
-              <p style={{ fontSize: '14px', color: '#444' }}><strong>Deskripsi:</strong> {g.deskripsi}</p>
-              <div style={{ backgroundColor: '#FAFAFA', padding: '10px', borderRadius: '6px', fontSize: '13px', display: 'grid', gap: '4px' }}>
-                <div><strong>Arah Gerak:</strong> {g.arah}</div>
-                <div><strong>Level:</strong> {g.level}</div>
-                <div><strong>Tenaga:</strong> {g.tenaga}</div>
+          {GERAK_DATA.map((g, i) => (
+            <Reveal as="article" className="gerak" key={g.id} variant={i % 2 ? 'right' : 'left'} delay={i * 90}>
+              <figure className="gerak__fig" style={{ margin: 0 }}>
+                <img src={g.image} alt={`Ilustrasi ${g.nama}`} loading="lazy" />
+                <figcaption className="gerak__cap">Ilustrasi Gerak {g.id}</figcaption>
+              </figure>
+
+              <div>
+                <h3 className="gerak__title">{g.nama}</h3>
+                <p className="gerak__desc">{g.deskripsi}</p>
+
+                <div className="axis">
+                  <div className="axis__box">
+                    <span className="axis__key">Arah</span>
+                    <span className="axis__val">{g.arah}</span>
+                  </div>
+                  <div className="axis__box">
+                    <span className="axis__key">Level</span>
+                    <span className="axis__val">{g.level}</span>
+                  </div>
+                  <div className="axis__box">
+                    <span className="axis__key">Tenaga</span>
+                    <span className="axis__val">{g.tenaga}</span>
+                  </div>
+                </div>
+
+                {g.videoUrl && (
+                  <a
+                    className="btn btn--ghost btn--sm"
+                    style={{ marginTop: 18 }}
+                    href={g.videoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Tonton video gerak
+                    <IconArrow />
+                  </a>
+                )}
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
+            </Reveal>
+          ))}
+
+          <Reveal variant="up" className="card" style={{ textAlign: 'center' }}>
+            <h3 className="card__title">Catat hasil pengamatanmu</h3>
+            <p className="card__text" style={{ marginBottom: 18 }}>
+              Buka LKPD digital dan isi kolom arah, level, tenaga, serta busana penari.
+            </p>
+            <button type="button" className="btn btn--primary" onClick={() => onNavigate('lkpd')}>
+              Isi LKPD Sekarang
+              <IconArrow />
+            </button>
+          </Reveal>
+        </div>
+      </section>
     </div>
   );
 }

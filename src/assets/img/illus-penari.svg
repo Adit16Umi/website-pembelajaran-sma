@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Ilustrasi dua penari dalam Tari Pattu'du Tommuane">
+  <defs>
+    <linearGradient id="dp-a" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f472b6" />
+      <stop offset="1" stop-color="#a855f7" />
+    </linearGradient>
+    <linearGradient id="dp-b" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee" />
+      <stop offset="1" stop-color="#4f46e5" />
+    </linearGradient>
+    <linearGradient id="dp-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fde68a" />
+      <stop offset="1" stop-color="#d97706" />
+    </linearGradient>
+    <radialGradient id="dp-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#a855f7" stop-opacity="0.28" />
+      <stop offset="1" stop-color="#a855f7" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <circle cx="200" cy="150" r="150" fill="url(#dp-glow)" />
+  <g stroke="url(#dp-gold)" stroke-width="2" fill="none" opacity="0.45" stroke-linecap="round">
+    <path d="M40 60 q40 -18 70 8" />
+    <path d="M360 240 q-40 18 -70 -8" />
+    <path d="M60 250 q-24 -30 -6 -56" />
+  </g>
+
+  <g transform="translate(6 0)">
+    <circle cx="150" cy="86" r="24" fill="url(#dp-a)" />
+    <path d="M126 112 h48 l16 118 h-80 z" fill="url(#dp-a)" />
+    <g stroke="url(#dp-gold)" stroke-width="1.8" fill="none" opacity="0.8">
+      <path d="M130 146 h40" />
+      <path d="M128 178 h44" />
+    </g>
+    <path d="M132 232 h36 l10 44 h-56 z" fill="url(#dp-gold)" opacity="0.9" />
+    <g stroke="url(#dp-a)" stroke-width="11" stroke-linecap="round" fill="none">
+      <path d="M132 122 C 96 138 78 170 72 204" />
+      <path d="M168 122 C 200 132 214 156 220 184" />
+    </g>
+    <g fill="url(#dp-gold)">
+      <circle cx="72" cy="206" r="6" />
+      <circle cx="220" cy="186" r="6" />
+    </g>
+  </g>
+
+  <g transform="translate(-6 0)">
+    <circle cx="252" cy="96" r="22" fill="url(#dp-b)" />
+    <path d="M230 120 h44 l18 112 h-80 z" fill="url(#dp-b)" />
+    <g stroke="url(#dp-gold)" stroke-width="1.8" fill="none" opacity="0.8">
+      <path d="M234 152 h36" />
+      <path d="M232 182 h40" />
+    </g>
+    <path d="M232 234 h40 l12 42 h-64 z" fill="url(#dp-gold)" opacity="0.9" />
+    <g stroke="url(#dp-b)" stroke-width="11" stroke-linecap="round" fill="none">
+      <path d="M234 130 C 272 140 288 168 292 200" />
+      <path d="M270 130 C 300 146 314 176 316 204" />
+    </g>
+    <g fill="url(#dp-gold)">
+      <circle cx="292" cy="202" r="6" />
+      <circle cx="316" cy="206" r="6" />
+    </g>
+  </g>
+
+  <g fill="url(#dp-gold)" opacity="0.95">
+    <path d="M200 44 l7 14 15 2 -11 11 3 15 -14 -7 -14 7 3 -15 -11 -11 15 -2 z" />
+  </g>
+</svg>

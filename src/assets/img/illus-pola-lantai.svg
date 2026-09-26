@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Diagram pola lantai tari">
+  <defs>
+    <linearGradient id="pl-line" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee" />
+      <stop offset="1" stop-color="#a855f7" />
+    </linearGradient>
+    <radialGradient id="pl-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.25" />
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <circle cx="200" cy="150" r="140" fill="url(#pl-glow)" />
+  <g transform="skewX(-18)">
+    <rect x="66" y="60" width="268" height="180" rx="16" fill="rgba(255,255,255,0.05)" stroke="url(#pl-line)" stroke-width="2.5" />
+    <g stroke="url(#pl-line)" stroke-width="2" fill="none" opacity="0.55" stroke-dasharray="6 8">
+      <path d="M66 120 h268" />
+      <path d="M66 180 h268" />
+    </g>
+    <path d="M90 220 C 150 220 150 80 210 80 C 270 80 270 220 320 220" fill="none" stroke="url(#pl-line)" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="10 10" />
+    <path d="M92 84 C 152 84 152 224 212 224" fill="none" stroke="#f5b942" stroke-width="3" stroke-linecap="round" opacity="0.85" />
+    <g fill="#f5b942">
+      <circle cx="90" cy="220" r="8" />
+      <circle cx="210" cy="80" r="8" />
+      <circle cx="320" cy="220" r="8" />
+    </g>
+    <g fill="none" stroke="#a855f7" stroke-width="3" opacity="0.9">
+      <path d="M120 100 l0 34 M120 140 l-10 0" />
+      <path d="M250 180 l30 0 M270 170 l0 20" />
+    </g>
+  </g>
+</svg>

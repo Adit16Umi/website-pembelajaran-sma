@@ -1,87 +1,157 @@
+import { useState } from 'react';
 import { MATERI_LIST } from '../data/dataTariPattudu';
+import Reveal from './Reveal';
+import { IconArrow, IconDown, IconSpark } from './Icons';
 
-export default function MateriSection() {
+function Flow({ items }) {
   return (
-    <div style={{ maxWidth: '900px', margin: '0 auto', padding: '20px', display: 'flex', flexDirection: 'column', gap: '25px' }}>
-      <h2 style={{ color: '#8B4513', borderBottom: '2px solid #8B4513', paddingBottom: '10px' }}>📚 Modul Materi Pembelajaran</h2>
-      
-      {MATERI_LIST.map((mat) => (
-        <div key={mat.id} style={{ backgroundColor: '#FFF', padding: '25px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
-          <h3 style={{ color: '#2C3E50', marginTop: 0 }}>{mat.title}</h3>
+    <div className="flow">
+      <strong style={{ fontSize: 12, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-mute)' }}>
+        Alur
+      </strong>
+      {items.map((item, i) => (
+        <span key={item} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+          <span className="flow__node" style={{ animationDelay: `${i * 110}ms` }}>
+            {item}
+          </span>
+          {i < items.length - 1 && <span className="flow__arrow">→</span>}
+        </span>
+      ))}
+    </div>
+  );
+}
 
-          {/* Pengertian & Subtitle */}
-          {mat.content && mat.content.map((c, i) => (
-            <div key={i} style={{ marginBottom: '15px' }}>
-              <h4 style={{ color: '#8B4513', margin: '10px 0 5px 0' }}>{c.subtitle}</h4>
-              <p style={{ lineHeight: '1.7', color: '#444', margin: 0 }}>{c.text}</p>
-            </div>
-          ))}
+function Modul({ mat, open, onToggle, index }) {
+  return (
+    <Reveal as="article" className="mat" data-open={open} delay={Math.min(index * 60, 240)}>
+      <button type="button" className="mat__head" onClick={onToggle} aria-expanded={open}>
+        <span className={`mat__badge ${index % 2 ? 'mat__badge--gold' : ''}`}>{index + 1}</span>
+        <span className="mat__titles">
+          <span className="mat__title">{mat.title}</span>
+          <span className="mat__hint">{mat.hint}</span>
+        </span>
+        <span className="mat__chev">
+          <IconDown />
+        </span>
+      </button>
 
-          {/* Tahukah Kamu (Fun Fact) */}
-          {mat.funFact && (
-            <div style={{ backgroundColor: '#FFF8DC', padding: '15px', borderRadius: '8px', borderLeft: '4px solid #DAA520', marginTop: '15px' }}>
-              <strong style={{ color: '#8B4513' }}>💡 Tahukah Kamu?</strong>
-              <p style={{ margin: '5px 0 0 0', fontSize: '14px', color: '#333' }}>{mat.funFact}</p>
-            </div>
-          )}
+      <div className="mat__body">
+        <div className="mat__bodyInner">
+          <div className="mat__content">
+            {mat.image && (
+              <img
+                src={mat.image}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                style={{ width: '100%', maxWidth: 340, margin: '18px auto 4px', opacity: 0.9 }}
+              />
+            )}
 
-          {/* Flow Inti Materi */}
-          {mat.flow && (
-            <div style={{ marginTop: '15px', backgroundColor: '#F9F9F9', padding: '15px', borderRadius: '8px', textAlign: 'center' }}>
-              <strong style={{ color: '#555', display: 'block', marginBottom: '10px' }}>Inti Materi:</strong>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
-                {mat.flow.map((item, idx) => (
-                  <span key={idx} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ backgroundColor: '#8B4513', color: '#fff', padding: '6px 14px', borderRadius: '20px', fontSize: '13px', fontWeight: 'bold' }}>
-                      {item}
-                    </span>
-                    {idx < mat.flow.length - 1 && <span style={{ color: '#888', fontWeight: 'bold' }}>→</span>}
-                  </span>
+            {mat.content?.map((c) => (
+              <div className="mat__block" key={c.subtitle}>
+                <h4 className="mat__sub">{c.subtitle}</h4>
+                <p className="mat__text">{c.text}</p>
+              </div>
+            ))}
+
+            {mat.items && (
+              <div className="specList">
+                {mat.items.map((item) => (
+                  <div className="spec" key={item.name}>
+                    <span className="spec__key">{item.name}</span>
+                    <span className="spec__val">{item.desc}</span>
+                  </div>
                 ))}
               </div>
-            </div>
-          )}
+            )}
 
-          {/* List Items (Karakteristik & Unsur Tari) */}
-          {mat.items && (
-            <div style={{ display: 'grid', gap: '10px', marginTop: '15px' }}>
-              {mat.items.map((item, idx) => (
-                <div key={idx} style={{ padding: '12px', border: '1px solid #EEE', borderRadius: '6px', backgroundColor: '#FAFAFA' }}>
-                  <strong style={{ color: '#8B4513' }}>{item.name}: </strong>
-                  <span style={{ color: '#444' }}>{item.desc}</span>
-                </div>
-              ))}
-            </div>
-          )}
+            {mat.values && (
+              <div className="grid grid--2" style={{ marginTop: 18 }}>
+                {mat.values.map((v) => (
+                  <div className="card card--gold" key={v.title} style={{ padding: 20 }}>
+                    <h4 className="card__title" style={{ fontSize: 16 }}>
+                      {v.title}
+                    </h4>
+                    <p className="card__text">{v.desc}</p>
+                  </div>
+                ))}
+              </div>
+            )}
 
-          {/* Aktivitas Mengamati */}
-          {mat.activity && (
-            <div style={{ backgroundColor: '#E6F3FF', padding: '15px', borderRadius: '8px', marginTop: '15px', borderLeft: '4px solid #007BFF' }}>
-              <strong style={{ color: '#0056B3' }}>📝 Aktivitas Mengamati:</strong>
-              <p style={{ margin: '5px 0 0 0', color: '#333' }}>{mat.activity}</p>
-            </div>
-          )}
+            {mat.flow && <Flow items={mat.flow} />}
 
-          {/* Nilai-Nilai Budaya */}
-          {mat.values && (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '12px', marginTop: '15px' }}>
-              {mat.values.map((v, i) => (
-                <div key={i} style={{ padding: '12px', backgroundColor: '#FFF8DC', borderRadius: '8px' }}>
-                  <strong style={{ color: '#8B4513', display: 'block', marginBottom: '4px' }}>{v.title}</strong>
-                  <span style={{ fontSize: '13px', color: '#555' }}>{v.desc}</span>
-                </div>
-              ))}
-            </div>
-          )}
+            {mat.funFact && (
+              <div className="callout">
+                <span className="callout__title">
+                  <IconSpark />
+                  Tahukah Kamu?
+                </span>
+                {mat.funFact}
+              </div>
+            )}
 
-          {/* Catatan Akademik / Media */}
-          {(mat.note || mat.academicNote) && (
-            <p style={{ fontStyle: 'italic', fontSize: '12px', color: '#777', marginTop: '15px', borderTop: '1px dashed #DDD', paddingTop: '10px' }}>
-              📌 {mat.note || mat.academicNote}
-            </p>
-          )}
+            {mat.activity && (
+              <div className="callout callout--info">
+                <span className="callout__title">Aktivitas Mengamati</span>
+                {mat.activity}
+              </div>
+            )}
+
+            {mat.note && <p className="note">{mat.note}</p>}
+            {mat.academicNote && <p className="note">{mat.academicNote}</p>}
+          </div>
         </div>
-      ))}
+      </div>
+    </Reveal>
+  );
+}
+
+export default function MateriSection({ onNavigate }) {
+  const [openId, setOpenId] = useState('materi-1');
+
+  return (
+    <div className="page">
+      <section className="sec">
+        <div className="wrap">
+          <Reveal className="sectionHead">
+            <div style={{ maxWidth: 680 }}>
+              <span className="eyebrow">Modul Belajar</span>
+              <h2 className="sec__title">
+                Lima Modul <span className="grad-text">Tari Pattu&apos;du Tommuane</span>
+              </h2>
+              <p className="sec__sub">
+                Klik judul modul untuk membuka isinya. Materi disusun berurutan dari pengertian, latar
+                belakang, ciri khas, unsur tari, hingga nilai kearifan lokal.
+              </p>
+            </div>
+            <span className="chip chip--violet">
+              {MATERI_LIST.length} modul · klik untuk membuka
+            </span>
+          </Reveal>
+
+          {MATERI_LIST.map((mat, i) => (
+            <Modul
+              key={mat.id}
+              mat={mat}
+              index={i}
+              open={openId === mat.id}
+              onToggle={() => setOpenId(openId === mat.id ? null : mat.id)}
+            />
+          ))}
+
+          <Reveal variant="up" className="card" style={{ textAlign: 'center' }}>
+            <h3 className="card__title">Sudah paham materinya?</h3>
+            <p className="card__text" style={{ marginBottom: 18 }}>
+              Lanjutkan dengan mengamati video tari, lalu catat hasil pengamatanmu pada LKPD digital.
+            </p>
+            <button type="button" className="btn btn--brand" onClick={() => onNavigate('video')}>
+              Lanjut ke Video Tari
+              <IconArrow />
+            </button>
+          </Reveal>
+        </div>
+      </section>
     </div>
   );
 }

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Ilustrasi gendang pengiring tari">
+  <defs>
+    <linearGradient id="gd-body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a855f7" />
+      <stop offset="1" stop-color="#4338ca" />
+    </linearGradient>
+    <linearGradient id="gd-skin" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fcd34d" />
+      <stop offset="1" stop-color="#d97706" />
+    </linearGradient>
+    <linearGradient id="gd-drum" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7c2d12" />
+      <stop offset="1" stop-color="#431407" />
+    </linearGradient>
+    <radialGradient id="gd-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f5b942" stop-opacity="0.35" />
+      <stop offset="1" stop-color="#f5b942" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <circle cx="200" cy="150" r="140" fill="url(#gd-glow)" />
+  <g stroke="#f5b942" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6">
+    <path d="M40 92 q26 -22 54 -8" />
+    <path d="M360 208 q-26 22 -54 8" />
+  </g>
+  <g transform="rotate(-12 200 160)">
+    <path d="M120 96 h160 l-16 128 h-128 z" fill="url(#gd-drum)" />
+    <ellipse cx="200" cy="96" rx="80" ry="26" fill="url(#gd-skin)" />
+    <ellipse cx="200" cy="96" rx="80" ry="26" fill="none" stroke="#fde68a" stroke-width="3" />
+    <ellipse cx="200" cy="96" rx="60" ry="18" fill="none" stroke="#fef3c7" stroke-width="1.5" opacity="0.6" />
+    <g stroke="#f5b942" stroke-width="3" opacity="0.85">
+      <path d="M136 104 L172 214" />
+      <path d="M200 96 L200 226" />
+      <path d="M264 104 L228 214" />
+    </g>
+    <path d="M120 96 q-6 -34 6 -50" fill="none" stroke="#a855f7" stroke-width="6" stroke-linecap="round" />
+    <path d="M280 96 q6 -34 -6 -50" fill="none" stroke="#a855f7" stroke-width="6" stroke-linecap="round" />
+    <circle cx="200" cy="150" r="16" fill="url(#gd-body)" />
+    <circle cx="200" cy="150" r="16" fill="none" stroke="#f5b942" stroke-width="2.5" />
+  </g>
+  <g stroke="url(#gd-skin)" stroke-width="13" stroke-linecap="round" fill="none">
+    <path d="M96 214 C 84 186 92 160 112 144" />
+    <path d="M304 214 C 316 186 308 160 288 144" />
+  </g>
+  <g fill="#f5b942">
+    <circle cx="96" cy="222" r="7" />
+    <circle cx="304" cy="222" r="7" />
+  </g>
+</svg>

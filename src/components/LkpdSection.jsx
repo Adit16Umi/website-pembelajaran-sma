@@ -1,69 +1,174 @@
 import { useState } from 'react';
+import Reveal from './Reveal';
+import { IconArrow, IconCheck, IconRefresh, IconSave } from './Icons';
 
-export default function LkpdSection() {
-  const [ansAct1, setAnsAct1] = useState({ q1: '', q2: '', q3: '', q4: '', q5: '' });
-  const [ansAct2, setAnsAct2] = useState({ gerak: '', musik: '', busana: '', polaLantai: '', nilaiBudaya: '' });
+const KUNCI = 'pattudu-lkpd';
+
+const PERTANYAAN_1 = [
+  'Apa yang dimaksud dengan Tari Pattu’d Tommuane?',
+  'Siapa yang membawakan tari tersebut?',
+  'Dari kebudayaan masyarakat mana tari tersebut berasal?',
+  'Sebutkan unsur-unsur tari yang kamu amati.',
+  'Mengapa Tari Pattu’d Tommuane dapat digunakan dalam pembelajaran seni tari?'
+];
+
+const PERTANYAAN_2 = [
+  { key: 'gerak', label: 'Gerak' },
+  { key: 'musik', label: 'Musik' },
+  { key: 'busana', label: 'Busana' },
+  { key: 'polaLantai', label: 'Pola Lantai' },
+  { key: 'nilaiBudaya', label: 'Nilai Budaya' }
+];
+
+const KOSONG = { a1: {}, a2: {} };
+
+function muatAwal() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(KUNCI) || 'null');
+    return raw && raw.a1 && raw.a2 ? raw : KOSONG;
+  } catch {
+    return KOSONG;
+  }
+}
+
+export default function LkpdSection({ onNavigate }) {
+  const [data, setData] = useState(muatAwal);
+  const [tersimpan, setTersimpan] = useState(false);
+
+  const setA1 = (key, value) => {
+    setData((d) => ({ ...d, a1: { ...d.a1, [key]: value } }));
+    setTersimpan(false);
+  };
+
+  const setA2 = (key, value) => {
+    setData((d) => ({ ...d, a2: { ...d.a2, [key]: value } }));
+    setTersimpan(false);
+  };
+
+  const simpan = () => {
+    try {
+      localStorage.setItem(KUNCI, JSON.stringify(data));
+      setTersimpan(true);
+    } catch {
+      setTersimpan(false);
+    }
+  };
+
+  const reset = () => {
+    setData(KOSONG);
+    setTersimpan(false);
+  };
+
+  const terisi = Object.values(data.a1).filter(Boolean).length + Object.values(data.a2).filter(Boolean).length;
+  const total = PERTANYAAN_1.length + PERTANYAAN_2.length;
 
   return (
-    <div style={{ maxWidth: '900px', margin: '0 auto', padding: '20px' }}>
-      <h2 style={{ color: '#8B4513', borderBottom: '2px solid #8B4513', paddingBottom: '10px' }}>📋 LKPD Digital (Lembar Kerja Peserta Didik)</h2>
-
-      {/* Aktivitas 1 */}
-      <div style={{ backgroundColor: '#FFF', padding: '25px', borderRadius: '12px', marginBottom: '20px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
-        <h3 style={{ color: '#8B4513' }}>Aktivitas 1 — Mengenal Tari</h3>
-        
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-          <div>
-            <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '5px' }}>1. Apa yang dimaksud dengan Tari Pattu’du Tommuane?</label>
-            <textarea value={ansAct1.q1} onChange={(e) => setAnsAct1({ ...ansAct1, q1: e.target.value })} style={styles.textarea} placeholder="Tuliskan jawabanmu..." />
-          </div>
-          <div>
-            <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '5px' }}>2. Siapa yang membawakan tari tersebut?</label>
-            <textarea value={ansAct1.q2} onChange={(e) => setAnsAct1({ ...ansAct1, q2: e.target.value })} style={styles.textarea} placeholder="Tuliskan jawabanmu..." />
-          </div>
-          <div>
-            <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '5px' }}>3. Dari kebudayaan masyarakat mana tari tersebut berasal?</label>
-            <textarea value={ansAct1.q3} onChange={(e) => setAnsAct1({ ...ansAct1, q3: e.target.value })} style={styles.textarea} placeholder="Tuliskan jawabanmu..." />
-          </div>
-          <div>
-            <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '5px' }}>4. Sebutkan unsur-unsur tari yang kamu amati.</label>
-            <textarea value={ansAct1.q4} onChange={(e) => setAnsAct1({ ...ansAct1, q4: e.target.value })} style={styles.textarea} placeholder="Tuliskan jawabanmu..." />
-          </div>
-          <div>
-            <label style={{ display: 'block', fontWeight: 'bold', marginBottom: '5px' }}>5. Mengapa Tari Pattu’du Tommuane dapat digunakan dalam pembelajaran seni tari?</label>
-            <textarea value={ansAct1.q5} onChange={(e) => setAnsAct1({ ...ansAct1, q5: e.target.value })} style={styles.textarea} placeholder="Tuliskan jawabanmu..." />
-          </div>
-        </div>
-      </div>
-
-      {/* Aktivitas 2 */}
-      <div style={{ backgroundColor: '#FFF', padding: '25px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.05)' }}>
-        <h3 style={{ color: '#8B4513' }}>Aktivitas 2 — Analisis Video</h3>
-        <p style={{ fontSize: '14px', color: '#666' }}>Setelah menonton video Tari Pattu’du Tommuane, tuliskan hasil pengamatanmu:</p>
-
-        <div style={{ display: 'grid', gap: '10px' }}>
-          {['gerak', 'musik', 'busana', 'polaLantai', 'nilaiBudaya'].map((key) => (
-            <div key={key} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <span style={{ width: '120px', fontWeight: 'bold', textTransform: 'capitalize' }}>{key}:</span>
-              <input 
-                type="text" 
-                value={ansAct2[key]} 
-                onChange={(e) => setAnsAct2({ ...ansAct2, [key]: e.target.value })} 
-                style={styles.input} 
-                placeholder={`Pengamatan ${key}...`} 
-              />
+    <div className="page">
+      <section className="sec">
+        <div className="wrap">
+          <Reveal className="sectionHead">
+            <div style={{ maxWidth: 700 }}>
+              <span className="eyebrow">Lembar Kerja</span>
+              <h2 className="sec__title">
+                LKPD <span className="grad-text">Digital</span>
+              </h2>
+              <p className="sec__sub">
+                Isi lembar kerja peserta didik ini setelah mengamati video Tari Pattu&apos;du Tommuane.
+                Jawabanmu tersimpan di perangkat ini secara lokal.
+              </p>
             </div>
-          ))}
+            <span className="chip chip--violet">
+              {terisi}/{total} kolom terisi
+            </span>
+          </Reveal>
+
+          <Reveal as="article" className="quiz" variant="up">
+            <h3 className="quiz__q" style={{ marginBottom: 22 }}>
+              <span className="quiz__no">1</span>
+              Aktivitas 1 — Mengenal Tari
+            </h3>
+
+            {PERTANYAAN_1.map((q, i) => (
+              <div className="field" key={q}>
+                <label className="field__label" htmlFor={`a1-${i}`}>
+                  <span className="field__no">{i + 1}</span>
+                  {q}
+                </label>
+                <textarea
+                  id={`a1-${i}`}
+                  className="textarea"
+                  value={data.a1[i] || ''}
+                  onChange={(e) => setA1(i, e.target.value)}
+                  placeholder="Tuliskan jawabanmu..."
+                />
+              </div>
+            ))}
+          </Reveal>
+
+          <Reveal as="article" className="quiz" variant="up" delay={80}>
+            <h3 className="quiz__q" style={{ marginBottom: 10 }}>
+              <span className="quiz__no">2</span>
+              Aktivitas 2 — Analisis Video
+            </h3>
+            <p className="card__text" style={{ marginBottom: 18 }}>
+              Setelah menonton video Tari Pattu&apos;du Tommuane, tuliskan hasil pengamatanmu.
+            </p>
+
+            <div className="rowSplit">
+              {PERTANYAAN_2.map((p) => (
+                <div className="field" key={p.key} style={{ marginTop: 0 }}>
+                  <label className="field__label" htmlFor={`a2-${p.key}`} style={{ fontSize: 13 }}>
+                    <span className="field__no" style={{ width: 22, height: 22, fontSize: 11 }}>
+                      {p.label.charAt(0)}
+                    </span>
+                    Pengamatan {p.label.toLowerCase()}
+                  </label>
+                  <input
+                    id={`a2-${p.key}`}
+                    type="text"
+                    className="input"
+                    value={data.a2[p.key] || ''}
+                    onChange={(e) => setA2(p.key, e.target.value)}
+                    placeholder={`Tulis pengamatan ${p.label.toLowerCase()}...`}
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="toolbar">
+              <button type="button" className="btn btn--primary" onClick={simpan}>
+                <IconSave /> Simpan Jawaban
+              </button>
+              <button type="button" className="btn btn--ghost" onClick={reset}>
+                <IconRefresh /> Kosongkan
+              </button>
+              <span className="toolbar__note">Data disimpan di localStorage perangkatmu.</span>
+            </div>
+
+            {tersimpan && (
+              <div className="toast">
+                <IconCheck /> Jawaban LKPD kamu berhasil disimpan.
+              </div>
+            )}
+          </Reveal>
+
+          <Reveal variant="up" className="card" style={{ textAlign: 'center' }}>
+            <h3 className="card__title">Lanjut ke evaluasi</h3>
+            <p className="card__text" style={{ marginBottom: 18 }}>
+              Setelah mengisi LKPD, uji pemahamanmu dengan kuis pilihan ganda.
+            </p>
+            <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+              <button type="button" className="btn btn--primary" onClick={() => onNavigate('evaluasi')}>
+                Kerjakan Evaluasi
+                <IconArrow />
+              </button>
+              <button type="button" className="btn btn--ghost" onClick={() => onNavigate('gerak')}>
+                Kembali ke Gerak Tari
+              </button>
+            </div>
+          </Reveal>
         </div>
-        <button onClick={() => alert("Jawaban LKPD kamu berhasil tersimpan!")} style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#8B4513', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer' }}>
-          Simpan Jawaban LKPD
-        </button>
-      </div>
+      </section>
     </div>
   );
 }
-
-const styles = {
-  textarea: { width: '100%', height: '60px', padding: '8px', borderRadius: '6px', border: '1px solid #CCC', fontFamily: 'inherit' },
-  input: { flex: 1, padding: '8px', borderRadius: '6px', border: '1px solid #CCC' }
-};

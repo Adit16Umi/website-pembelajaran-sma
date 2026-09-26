@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Ilustrasi pohon kearifan lokal">
+  <defs>
+    <linearGradient id="kl-leaf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#34d399" />
+      <stop offset="1" stop-color="#0f766e" />
+    </linearGradient>
+    <linearGradient id="kl-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fde68a" />
+      <stop offset="1" stop-color="#d97706" />
+    </linearGradient>
+    <radialGradient id="kl-glow" cx="0.5" cy="0.45" r="0.5">
+      <stop offset="0" stop-color="#34d399" stop-opacity="0.3" />
+      <stop offset="1" stop-color="#34d399" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <circle cx="200" cy="140" r="140" fill="url(#kl-glow)" />
+  <g stroke="url(#kl-gold)" stroke-width="6" stroke-linecap="round">
+    <path d="M200 250 V150" />
+    <path d="M200 200 l-34 -26" />
+    <path d="M200 180 l32 -28" />
+  </g>
+  <g fill="url(#kl-leaf)">
+    <ellipse cx="140" cy="128" rx="52" ry="40" />
+    <ellipse cx="258" cy="112" rx="56" ry="42" />
+    <ellipse cx="200" cy="82" rx="66" ry="46" />
+  </g>
+  <g fill="url(#kl-gold)">
+    <circle cx="200" cy="70" r="9" />
+    <circle cx="140" cy="130" r="6" />
+    <circle cx="258" cy="114" r="6" />
+    <circle cx="176" cy="46" r="5" />
+  </g>
+  <g fill="#a7f3d0" opacity="0.35">
+    <circle cx="200" cy="82" r="14" />
+  </g>
+  <path d="M140 250 h120 q14 0 14 12 t-14 12 h-120 q-14 0 -14 -12 t14 -12 z" fill="url(#kl-gold)" opacity="0.9" />
+  <g stroke="#22d3ee" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8">
+    <path d="M78 92 q-18 24 -6 48" />
+    <path d="M322 92 q18 24 6 48" />
+  </g>
+</svg>
