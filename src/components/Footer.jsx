@@ -76,7 +76,7 @@ export default function Footer({ onNavigate }) {
 
       <div className="wrap footer__bottom">
         <span>Media Pembelajaran Berbasis Website — SMP Negeri 2 Majene</span>
-        <span>Dibangun dengan React + Vite · Dirancang untuk pembelajaran budaya lokal</span>
+    
       </div>
     </footer>
   );
